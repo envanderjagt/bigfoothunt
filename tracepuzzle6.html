@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>S.E.U.R. FIELD TERMINAL</title>
+
+<style>
+
+body {
+    margin:0;
+    background:black;
+    color:#00ff66;
+    font-family:monospace;
+    overflow-x:hidden;
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/* NIGHT VISION */
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:radial-gradient(
+        circle at center,
+        rgba(0,255,100,0.12),
+        black 70%
+    );
+
+    pointer-events:none;
+}
+
+
+/* SCANLINES */
+
+body::after {
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,100,0.05),
+        rgba(0,255,100,0.05) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+
+    animation:flicker .15s infinite;
+    pointer-events:none;
+}
+
+
+@keyframes flicker {
+
+0% {opacity:.9;}
+50% {opacity:1;}
+100% {opacity:.85;}
+
+}
+
+
+/* TERMINAL */
+
+.container {
+
+    max-width:750px;
+    width:100%;
+    padding:20px;
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+
+}
+
+
+.header,
+.panel {
+
+    border:1px solid #00ff66;
+    padding:15px;
+    margin-bottom:15px;
+
+    background:rgba(0,0,0,.65);
+
+    border-radius:6px;
+
+}
+
+
+.glow {
+
+text-shadow:0 0 8px #00ff66;
+
+}
+
+
+.warning {
+
+color:red;
+text-shadow:0 0 5px red;
+
+}
+
+
+#gps {
+
+font-size:13px;
+margin-top:8px;
+
+}
+
+
+#radio {
+
+font-size:12px;
+height:18px;
+margin-top:8px;
+
+}
+
+
+input {
+
+background:black;
+border:1px solid #00ff66;
+
+color:#00ff66;
+
+padding:8px;
+
+width:220px;
+
+text-align:center;
+
+font-family:monospace;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="header glow">
+
+S.E.U.R. FIELD TERMINAL v3.11<br>
+CLEARANCE LEVEL: 6
+
+<div id="gps">
+GPS INITIALISING...
+</div>
+
+<div id="radio">
+...
+</div>
+
+</div>
+
+
+
+<div class="panel">
+
+<h2 class="glow">
+ENVIRONMENTAL DISTURBANCE
+</h2>
+
+<p class="warning">
+OPDRACHT: MAAK HET MEEST SATIFYING ASMR GELUID IN HET THEMA BOS
+</p>
+
+
+</div>
+
+
+
+
+<div class="panel">
+
+<h3 class="glow">
+FIELD OBJECTIVE
+</h3>
+
+
+<p>
+
+THE SPECIMEN FLED THE SCENE IN A HURRY, LEAVING CLUES ON NEARBY VEGETATION
+
+</p>
+
+
+<p>
+
+DETERMINE THE DIRECTION OF TRAVEL (NOORD, NOORD OOST, OOST, etc.)
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="panel">
+
+<h3 class="glow">
+ANALYSIS DATA
+</h3>
+
+
+<p>
+Branch impact angle: 42°
+</p>
+
+<p>
+Break pattern: outward fracture
+</p>
+
+<p>
+Movement vector required
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="panel">
+
+<h3 class="glow">
+DIRECTION REPORT
+</h3>
+
+
+<p>
+Enter detected travel direction
+</p>
+
+
+<input id="answer" placeholder="north / south / east / west">
+
+
+<p id="result" class="warning"></p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// GPS SIMULATION
+
+let lat=52.5;
+let lon=5.4;
+
+
+setInterval(()=>{
+
+lat+=(Math.random()-.5)*0.0005;
+lon+=(Math.random()-.5)*0.0005;
+
+
+document.getElementById("gps").innerText =
+`GPS ${lat.toFixed(5)} N / ${lon.toFixed(5)} E`;
+
+
+},800);
+
+
+
+
+// RADIO INTERFERENCE
+
+
+const noise=[
+
+"—kzzt— movement detected —",
+"...branch analysis running...",
+"::vector calculation::",
+"▣ tracking specimen ▣",
+"unknown biological pattern",
+"signal drifting..."
+
+];
+
+
+setInterval(()=>{
+
+document.getElementById("radio").innerText =
+noise[Math.floor(Math.random()*noise.length)];
+
+
+},300);
+
+
+
+
+// PUZZLE SOLUTION
+
+
+const correctAnswer="east";
+
+
+document.getElementById("answer")
+.addEventListener("input",function(){
+
+
+if(this.value.trim().toLowerCase()===correctAnswer){
+
+
+document.getElementById("result").innerText =
+"VECTOR CONFIRMED — LOCATION UPDATED";
+
+
+
+localStorage.setItem("c6","1");
+
+
+
+setTimeout(()=>{
+
+window.location.href="map.html";
+
+},1200);
+
+
+}
+
+
+
+});
+
+
+
+</script>
+
+
+</body>
+</html>
