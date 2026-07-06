@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>N.E.C.I.A. MAP NODE</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: monospace;
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,255,100,0.10), black 70%);
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,100,0.05),
+        rgba(0,255,100,0.05) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.85; }
+}
+
+.container {
+    max-width: 800px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.panel {
+    border: 1px solid #00ff66;
+    padding: 15px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 6px;
+}
+
+img {
+    width: 100%;
+    border: 1px solid #00ff66;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="panel">
+        <h2>N.E.C.I.A. MAP NODE</h2>
+        <p>ANALYSING TERRAIN DATA...</p>
+
+        <img src="startermap1.png" alt="map">
+
+        <p>NEW SIGNAL ORIGIN DETECTED NEAR WATERLINE</p>
+    </div>
+
+</div>
+
+</body>
+</html>
