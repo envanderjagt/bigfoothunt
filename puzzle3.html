@@ -1,0 +1,14 @@
+<p>INTERCEPT SIGNAL:</p>
+<p>(6 × 2) = ?</p>
+
+<input id="a">
+<button onclick="check()">SUBMIT</button>
+
+<script>
+function check(){
+    if(document.getElementById("a").value === "12"){
+        localStorage.setItem("c3","1");
+        window.location.href="map.html";
+    }
+}
+</script>
