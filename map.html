@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <title>N.E.C.I.A MAP NODE</title>
 
+<button onclick="resetGame()">RESET GAME</button>
+
+<script>
+function resetGame(){
+    localStorage.clear();
+    alert("SYSTEM RESET");
+    location.reload();
+}
+</script>
+    
 <style>
 body {
     margin: 0;
