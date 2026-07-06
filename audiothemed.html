@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>N.E.C.I.A. FIELD TERMINAL</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* NIGHT VISION OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,255,100,0.08), black 70%);
+    pointer-events: none;
+}
+
+/* SCANLINES */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,100,0.05),
+        rgba(0,255,100,0.05) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.85; }
+}
+
+.container {
+    padding: 20px;
+}
+
+.header {
+    border: 1px solid #00ff66;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.panel {
+    border: 1px solid #00ff66;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px #00ff6633;
+}
+
+.glow {
+    text-shadow: 0 0 8px #00ff66;
+}
+
+.warning {
+    color: red;
+    text-shadow: 0 0 5px red;
+}
+
+button {
+    background: black;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #003300;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header glow">
+        N.E.C.I.A. // NORTH EUROPEAN CRYPTID INVESTIGATION AGENCY<br>
+        FIELD TERMINAL v3.11 — CLEARANCE LEVEL: 4
+    </div>
+
+    <div class="panel">
+        <h2 class="glow">CASE FILE: BIGFOOT SIGNAL DETECTED</h2>
+        <p>Status: <span class="warning">UNSTABLE DATA / INTERFERENCE HIGH</span></p>
+        <p>Location: Sector C — Northern Forest Zone</p>
+        <p>Time Stamp: 02:14:33 AM</p>
+    </div>
+
+    <div class="panel">
+        <h3 class="glow">RECOVERED AUDIO LOG</h3>
+        <p>Motion sensor recovered anomalous vocalization:</p>
+
+        <audio controls>
+            <source src="audio/howl.mp3" type="audio/mpeg">
+        </audio>
+
+        <p class="warning">
+            NOTE: Audio contains repeating low-frequency pattern.
+            Possible communication signal detected.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h3 class="glow">SIGNAL ANALYSIS</h3>
+        <p>Signal Strength: WEAK → FLUCTUATING</p>
+        <p>Pattern: 3-1-4-3-3</p>
+        <p>Interpretation: POSSIBLE MOVEMENT VECTOR</p>
+    </div>
+
+    <div class="panel">
+        <h3 class="glow">AGENT NOTES</h3>
+        <p>
+            “Tracks appear fresh. Depth suggests mass exceeding expected regional fauna.
+            Movement inconsistent with known species behavior.”
+        </p>
+    </div>
+
+    <div class="panel">
+        <h3 class="glow">ACTION REQUIRED</h3>
+        <button onclick="reveal()">DECRYPT NEXT LOCATION</button>
+
+        <p id="hidden" style="display:none; margin-top:10px;">
+            COORDINATES UNLOCKED: FOLLOW THE WATERLINE → EAST RIDGE → BROKEN PINE
+        </p>
+    </div>
+
+</div>
+
+<script>
+function reveal() {
+    document.getElementById("hidden").style.display = "block";
+}
+</script>
+
+</body>
+</html>
