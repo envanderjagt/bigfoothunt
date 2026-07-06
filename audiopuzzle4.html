@@ -191,6 +191,7 @@ document.getElementById("meters").addEventListener("input", function () {
             "ACCESS GRANTED — REDIRECTING...";
         
         setTimeout(() => {
+            localStorage.setItem("c4","1");
             window.location.href = "map.html";
         }, 1200);
     }
