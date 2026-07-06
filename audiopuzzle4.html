@@ -118,7 +118,7 @@ button {
 
     <div class="panel">
         <h2 class="glow">CASE FILE: BIGFOOT SIGNAL DETECTED</h2>
-        <p class="warning">UNSTABLE DATA / INTERFERENCE HIGH</p>
+        <p class="warning">RECORDING STARTED FROM MOVEMENT DETECTION</p>
     </div>
 
     <div class="panel">
@@ -130,13 +130,13 @@ button {
 
     <div class="panel">
         <h3 class="glow">SIGNAL ANALYSIS</h3>
-        <p>Pattern: 3-1-4-3-3</p>
-        <p>Interpretation: POSSIBLE MOVEMENT VECTOR</p>
+        <p>ROAR DISTANCE: 427 Meter</p>
+        <p>ACCURACY: PRECISE</p>
     </div>
 
     <div class="panel">
         <h3 class="glow">COORDINATE LOCK</h3>
-        <p>ENTER DISTANCE IN METERS TO DECRYPT NEXT LOCATION</p>
+        <p>INSERT STEPDISTANCE OF SPECIMEN</p>
 
         <input id="meters" placeholder="_____ meters" />
 
@@ -181,7 +181,7 @@ setInterval(() => {
 // =====================
 // PUZZLE SOLUTION
 // =====================
-const correctMeters = 31433;
+const correctMeters = 61;
 
 document.getElementById("meters").addEventListener("input", function () {
     const val = parseInt(this.value);
