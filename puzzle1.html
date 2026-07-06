@@ -1,0 +1,11 @@
+<input id="a">
+<button onclick="check()">SUBMIT</button>
+
+<script>
+function check(){
+    if(document.getElementById("a").value === "3143"){
+        localStorage.setItem("c1","1");
+        window.location.href="map.html";
+    }
+}
+</script>
