@@ -1,14 +1,182 @@
-<p>INTERCEPT SIGNAL:</p>
-<p>(6 × 2) = ?</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>S.E.U.R. FIELD TERMINAL</title>
 
-<input id="a">
-<button onclick="check()">SUBMIT</button>
+<style>
+body{
+margin:0;
+background:black;
+color:#00ff66;
+font-family:monospace;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,rgba(0,255,100,.12),black 70%);
+pointer-events:none;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:repeating-linear-gradient(
+to bottom,
+rgba(0,255,100,.05),
+rgba(0,255,100,.05) 1px,
+transparent 2px,
+transparent 4px);
+animation:flicker .15s infinite;
+pointer-events:none;
+}
+
+@keyframes flicker{
+0%{opacity:.9;}
+50%{opacity:1;}
+100%{opacity:.85;}
+}
+
+.container{
+max-width:750px;
+width:100%;
+padding:20px;
+text-align:center;
+}
+
+.header,.panel{
+border:1px solid #00ff66;
+padding:15px;
+margin-bottom:15px;
+background:rgba(0,0,0,.65);
+border-radius:6px;
+}
+
+.glow{text-shadow:0 0 8px #00ff66;}
+.warning{color:red;text-shadow:0 0 5px red;}
+
+input{
+background:black;
+border:1px solid #00ff66;
+color:#00ff66;
+padding:8px;
+width:220px;
+text-align:center;
+}
+
+#gps,#radio{
+margin-top:8px;
+font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header glow">
+
+S.E.U.R. FIELD TERMINAL<br>
+CLEARANCE LEVEL 3
+
+<div id="gps">GPS INITIALISING...</div>
+<div id="radio">...</div>
+
+</div>
+
+<div class="panel">
+
+<h2 class="glow">
+ENVIRONMENTAL ANOMALY
+</h2>
+
+<p class="warning">
+Natural objects appear intentionally arranged.
+</p>
+
+</div>
+
+<div class="panel">
+
+<h3 class="glow">
+FIELD OBJECTIVE
+</h3>
+
+<p>
+
+Locate the arranged stones.<br><br>
+
+Determine the direction indicated by the formation.
+
+</p>
+
+</div>
+
+<div class="panel">
+
+<h3 class="glow">
+REPORT DIRECTION
+</h3>
+
+<input id="answer" placeholder="north / south / east / west">
+
+<p id="result"></p>
+
+</div>
+
+</div>
 
 <script>
-function check(){
-    if(document.getElementById("a").value === "12"){
-        localStorage.setItem("c3","1");
-        window.location.href="map.html";
-    }
+
+let lat=52.5;
+let lon=5.4;
+
+setInterval(()=>{
+lat+=(Math.random()-.5)*0.0005;
+lon+=(Math.random()-.5)*0.0005;
+gps.innerText=`GPS ${lat.toFixed(5)} N / ${lon.toFixed(5)} E`;
+},800);
+
+const noise=[
+"Signal drift...",
+"Satellite sync...",
+"Environmental scan...",
+"Tracking movement...",
+"Unknown transmission..."
+];
+
+setInterval(()=>{
+radio.innerText=noise[Math.floor(Math.random()*noise.length)];
+},300);
+
+const correct="east";
+
+answer.addEventListener("input",()=>{
+
+if(answer.value.trim().toLowerCase()==correct){
+
+result.innerText="DIRECTION VERIFIED";
+
+localStorage.setItem("c3","1");
+
+setTimeout(()=>{
+window.location="map.html";
+},1200);
+
 }
+
+});
+
 </script>
+
+</body>
+</html>
