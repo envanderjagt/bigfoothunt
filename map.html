@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>N.E.C.I.A MAP NODE</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    text-align: center;
+}
+
+.panel {
+    border: 1px solid #00ff66;
+    padding: 15px;
+    background: rgba(0,0,0,0.7);
+}
+
+.map {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.map img {
+    width: 100%;
+    border: 1px solid #00ff66;
+}
+
+/* MARKERS */
+.marker {
+    position: absolute;
+    font-size: 22px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1s ease;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+#m1 { top: 30%; left: 40%; }
+#m2 { top: 60%; left: 70%; }
+#m3 { top: 45%; left: 20%; }
+#m4 { top: 75%; left: 50%; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="panel">
+        <h2>N.E.C.I.A. MAP NODE</h2>
+        <p>Analyzing recovered signal data...</p>
+
+        <div class="map">
+            <img src="startermap1.png">
+
+            <div id="m1" class="marker">📍</div>
+            <div id="m2" class="marker">📍</div>
+            <div id="m3" class="marker">📍</div>
+            <div id="m4" class="marker">📍</div>
+        </div>
+
+        <p id="status">NO ACTIVE SIGNALS</p>
+    </div>
+</div>
+
+<script>
+const clues = ["c1","c2","c3","c4"];
+
+function reveal(id, markerId, text) {
+    if (localStorage.getItem(id) === "1") {
+        document.getElementById(markerId).style.opacity = "1";
+        document.getElementById(markerId).style.transform = "scale(1.2)";
+        document.getElementById("status").innerText = text;
+    }
+}
+
+reveal("c1","m1","SIGNAL NODE 1 LOCKED");
+reveal("c2","m2","SIGNAL NODE 2 LOCKED");
+reveal("c3","m3","SIGNAL NODE 3 LOCKED");
+reveal("c4","m4","SIGNAL NODE 4 LOCKED");
+</script>
+
+</body>
+</html>
