@@ -1,0 +1,12 @@
+<p>REARRANGE SIGNAL: R O F E S T</p>
+<input id="a">
+<button onclick="check()">SUBMIT</button>
+
+<script>
+function check(){
+    if(document.getElementById("a").value.toLowerCase() === "forest"){
+        localStorage.setItem("c2","1");
+        window.location.href="map.html";
+    }
+}
+</script>
