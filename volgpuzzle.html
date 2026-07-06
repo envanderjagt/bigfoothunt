@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>S.E.U.R. FIELD TERMINAL</title>
+
+<style>
+body {
+    margin:0;
+    background:black;
+    color:#00ff66;
+    font-family:monospace;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center,
+        rgba(0,255,100,.12),
+        black 70%);
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,100,.05),
+        rgba(0,255,100,.05) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    animation:flicker .15s infinite;
+    pointer-events:none;
+}
+
+@keyframes flicker{
+0%{opacity:.9;}
+50%{opacity:1;}
+100%{opacity:.85;}
+}
+
+.container{
+    width:100%;
+    max-width:750px;
+    padding:20px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.header,.panel{
+    border:1px solid #00ff66;
+    padding:15px;
+    margin-bottom:15px;
+    background:rgba(0,0,0,.65);
+    border-radius:6px;
+}
+
+.glow{
+    text-shadow:0 0 8px #00ff66;
+}
+
+.warning{
+    color:red;
+    text-shadow:0 0 5px red;
+}
+
+#gps{
+    margin-top:8px;
+    font-size:13px;
+}
+
+#radio{
+    margin-top:8px;
+    font-size:12px;
+    height:18px;
+}
+
+input{
+    background:black;
+    color:#00ff66;
+    border:1px solid #00ff66;
+    padding:8px;
+    width:220px;
+    text-align:center;
+    font-family:monospace;
+}
+
+.instructions{
+    font-size:18px;
+    line-height:2;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header glow">
+S.E.U.R. FIELD TERMINAL v3.11<br>
+CLEARANCE LEVEL 5
+
+<div id="gps">GPS INITIALISING...</div>
+<div id="radio">...</div>
+
+</div>
+
+<div class="panel">
+
+<h2 class="glow">
+TRACKING RECORDING RETRIEVED
+</h2>
+
+<p class="warning">
+OPDRACHT: MAAK EEN 10 SECONDEN VIDEO VAN EEN FREEK VONK IMPERSONATIE DIE EEN NIEUWE DIERSOORT GEVONDEN HEEFT
+</p>
+
+</div>
+
+<div class="panel">
+
+<h3 class="glow">
+FIELD NAVIGATION RECORDING ESTIMATION
+</h3>
+
+<div class="instructions">
+
+▶ Walk <b>6 meters north</b><br><br>
+
+▶ Turn to bearing <b>047°</b><br><br>
+
+▶ Continue <b>3 meters</b><br><br>
+
+▶ Locate the hidden S.E.U.R. field marker.
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3 class="glow">
+FIELD REPORT
+</h3>
+
+<p>
+
+Enter the authentication word found at the destination.
+
+</p>
+
+<input
+id="answer"
+placeholder="Authentication code">
+
+<p id="result" class="warning"></p>
+
+</div>
+
+</div>
+
+<script>
+
+// GPS drift
+
+let lat=52.5;
+let lon=5.4;
+
+setInterval(()=>{
+
+lat+=(Math.random()-.5)*0.0005;
+lon+=(Math.random()-.5)*0.0005;
+
+document.getElementById("gps").innerText=
+`GPS ${lat.toFixed(5)} N / ${lon.toFixed(5)} E`;
+
+},800);
+
+// Radio chatter
+
+const noise=[
+"Signal acquired...",
+"Satellite lock...",
+"Tracking target...",
+"Field telemetry stable...",
+"Live movement analysis...",
+"Specimen proximity increasing..."
+];
+
+setInterval(()=>{
+
+document.getElementById("radio").innerText=
+noise[Math.floor(Math.random()*noise.length)];
+
+},300);
+
+// Change this to your hidden marker word
+
+const correctAnswer="alder";
+
+document.getElementById("answer").addEventListener("input",function(){
+
+if(this.value.trim().toLowerCase()===correctAnswer){
+
+document.getElementById("result").innerText=
+"AUTHENTICATION ACCEPTED — CASE CLOSED";
+
+localStorage.setItem("c5","1");
+
+setTimeout(()=>{
+
+window.location.href="map.html";
+
+},1500);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
