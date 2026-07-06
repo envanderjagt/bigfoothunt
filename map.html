@@ -62,6 +62,8 @@ body {
 #m2 { top: 60%; left: 70%; }
 #m3 { top: 45%; left: 20%; }
 #m4 { top: 75%; left: 50%; }
+#m5 { top: 65%; left: 20%; }
+#m6 { top: 70%; left: 10%; }
 </style>
 </head>
 
@@ -79,6 +81,8 @@ body {
             <div id="m2" class="marker">📍</div>
             <div id="m3" class="marker">📍</div>
             <div id="m4" class="marker">📍</div>
+            <div id="m5" class="marker">📍</div>
+            <div id="m6" class="marker">📍</div>
         </div>
 
         <p id="status">NO ACTIVE SIGNALS</p>
@@ -86,7 +90,7 @@ body {
 </div>
 
 <script>
-const clues = ["c1","c2","c3","c4"];
+const clues = ["c1","c2","c3","c4", "c5", "c6"];
 
 function reveal(id, markerId, text) {
     if (localStorage.getItem(id) === "1") {
@@ -100,6 +104,8 @@ reveal("c1","m1","SIGNAL NODE 1 UNLOCKED");
 reveal("c2","m2","SIGNAL NODE 2 UNLOCKED");
 reveal("c3","m3","SIGNAL NODE 3 UNLOCKED");
 reveal("c4","m4","SIGNAL NODE 4 UNLOCKED");
+reveal("c5","m5","SIGNAL NODE 5 UNLOCKED");
+reveal("c6","m6","SIGNAL NODE 6 UNLOCKED");
 </script>
 
 </body>
