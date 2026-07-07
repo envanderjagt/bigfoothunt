@@ -131,13 +131,13 @@ button {
 
     <div class="panel">
         <h3 class="glow">SIGNAL ANALYSIS</h3>
-        <p>ROAR DISTANCE: 427 Meter</p>
+        <p>ROAR DISTANCE FROM CAMERA: 42 Meters</p>
         <p>ACCURACY: PRECISE</p>
     </div>
 
     <div class="panel">
         <h3 class="glow">COORDINATE LOCK</h3>
-        <p>INSERT STEPDISTANCE OF SPECIMEN</p>
+        <p>INSERT STRIDE LENGTH OF SPECIMEN (AFSTAND VAN EEN STAP VAN LE GRAND PIED)</p>
 
         <input id="meters" placeholder="_____ meters" />
 
@@ -182,7 +182,7 @@ setInterval(() => {
 // =====================
 // PUZZLE SOLUTION
 // =====================
-const correctMeters = 61;
+const correctMeters = 6;
 
 document.getElementById("meters").addEventListener("input", function () {
     const val = parseInt(this.value);
