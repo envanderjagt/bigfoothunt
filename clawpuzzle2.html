@@ -98,7 +98,7 @@ OPDRACHT: MAAK EEN 10 SECONDEN VIDEO VAN EEN FOUND FOOTAGE HORROR CLIP INCLUSIEF
 </p>
 
 <p>
-NEARBY DAMAGED TREE DETECTED
+NEARBY DAMAGED SURROUNDINGS DETECTED
 </p>
 
 </div>
@@ -109,9 +109,9 @@ NEARBY DAMAGED TREE DETECTED
 
 <p>
 
-LOCATE DAMAGED VEGETATION.<br><br>
+LOCATE THE VEGETATION.<br><br>
 
-DETERMINE CLAW STRIPE COUNT LEFT BY SPECIMEN.
+DETERMINE THE TREE TYPE FOUND AT THE LOCATION
 
 </p>
 
@@ -121,7 +121,7 @@ DETERMINE CLAW STRIPE COUNT LEFT BY SPECIMEN.
 
 <h3 class="glow">FIELD REPORT</h3>
 
-<input id="answer" placeholder="Number of claw stripes">
+<input id="answer" placeholder="NOTE TREE TYPE">
 
 <p id="result"></p>
 
@@ -153,7 +153,7 @@ setInterval(()=>{
 radio.innerText=noise[Math.floor(Math.random()*noise.length)];
 },300);
 
-const correct="5";
+const correct="den";
 
 answer.addEventListener("input",()=>{
 
