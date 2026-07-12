@@ -6,110 +6,98 @@
 
 <style>
 body {
-    margin: 0;
-    background: black;
-    color: #00ff66;
-    font-family: monospace;
-    overflow-x: hidden;
-
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin:0;
+    background:black;
+    color:#00ff66;
+    font-family:monospace;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-/* NIGHT VISION */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(
-        circle at center,
-        rgba(0,255,100,0.12),
-        rgba(0,0,0,1) 70%
-    );
-    pointer-events: none;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center,
+        rgba(0,255,100,.12),
+        black 70%);
+    pointer-events:none;
 }
 
-/* SCANLINES */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
         to bottom,
-        rgba(0,255,100,0.05),
-        rgba(0,255,100,0.05) 1px,
+        rgba(0,255,100,.05),
+        rgba(0,255,100,.05) 1px,
         transparent 2px,
         transparent 4px
     );
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
+    animation:flicker .15s infinite;
+    pointer-events:none;
 }
 
-@keyframes flicker {
-    0% { opacity: 0.9; }
-    50% { opacity: 1; }
-    100% { opacity: 0.85; }
+@keyframes flicker{
+0%{opacity:.9;}
+50%{opacity:1;}
+100%{opacity:.85;}
 }
 
-/* TERMINAL */
-.container {
-    max-width: 750px;
-    width: 100%;
-    padding: 20px;
-    z-index: 2;
-    position: relative;
-    text-align: center;
+.container{
+    width:100%;
+    max-width:750px;
+    padding:20px;
+    text-align:center;
+    position:relative;
+    z-index:2;
 }
 
-.header,
-.panel {
-    border: 1px solid #00ff66;
-    padding: 15px;
-    margin-bottom: 15px;
-    background: rgba(0,0,0,0.65);
-    border-radius: 6px;
+.header,.panel{
+    border:1px solid #00ff66;
+    padding:15px;
+    margin-bottom:15px;
+    background:rgba(0,0,0,.65);
+    border-radius:6px;
 }
 
-.glow {
-    text-shadow: 0 0 8px #00ff66;
+.glow{
+    text-shadow:0 0 8px #00ff66;
 }
 
-.warning {
-    color: red;
-    text-shadow: 0 0 5px red;
+.warning{
+    color:red;
+    text-shadow:0 0 5px red;
 }
 
-#radio {
-    font-size: 12px;
-    opacity: 0.8;
-    margin-top: 8px;
-    height: 18px;
+#gps{
+    margin-top:8px;
+    font-size:13px;
 }
 
-#gps {
-    font-size: 13px;
-    margin-top: 5px;
-    opacity: 0.9;
+#radio{
+    margin-top:8px;
+    font-size:12px;
+    height:18px;
 }
 
-input {
-    background: black;
-    border: 1px solid #00ff66;
-    color: #00ff66;
-    padding: 8px;
-    width: 220px;
-    text-align: center;
-    font-family: monospace;
+input{
+    background:black;
+    color:#00ff66;
+    border:1px solid #00ff66;
+    padding:8px;
+    width:220px;
+    text-align:center;
+    font-family:monospace;
 }
 
-.rune-image {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 15px;
-    border: 1px solid #00ff66;
-    box-shadow: 0 0 15px rgba(0,255,100,0.25);
+.instructions{
+    font-size:18px;
+    line-height:2;
 }
 </style>
 </head>
@@ -118,126 +106,126 @@ input {
 
 <div class="container">
 
-    <div class="header glow">
-        S.E.U.R. FIELD TERMINAL v3.11<br>
-        CLEARANCE LEVEL: 1
+<div class="header glow">
+S.E.U.R. FIELD TERMINAL v3.11<br>
+CLEARANCE LEVEL 1
 
-        <div id="gps">
-            GPS: INITIALISING...
-        </div>
+<div id="gps">GPS INITIALISING...</div>
+<div id="radio">...</div>
 
-        <div id="radio">
-            ...
-        </div>
-    </div>
+</div>
 
-    <div class="panel">
-        <h2 class="glow">CASE FILE: LE GRAND PIED SIGNAL DETECTED</h2>
+<div class="panel">
 
-        <p class="warning">
-            OPDRACHT: MAAK EEN FOTO VAN EEN TEAMGENOOT ZO VER MOGELIJK VAN DE GROND
-        </p>
-    </div>
+<h2 class="glow">
+TRACKING RECORDING RETRIEVED
+</h2>
 
-    <div class="panel">
+<p class="warning">
+OPDRACHT: MAAK EEN FOTO VAN EEN TEAMGENOOT DIE ZO VER MOGELIJK VAN DE GROND LIJKT
+</p>
 
-        <h3 class="glow">RECOVERED RUNE FRAGMENT</h3>
+</div>
 
-        <p>
-            FIELD AGENTS WERE UNABLE TO IDENTIFY THE LANGUAGE.
-            DECRYPT THE MESSAGE ON SURROUNDING TREES TO CONTINUE.
-        </p>
+<div class="panel">
 
-        <img src="runicalphabet.jpg" class="rune-image" alt="Rune Cipher">
+<h3 class="glow">
+FIELD NAVIGATION RECORDING ESTIMATION
+</h3>
 
-    </div>
+<div class="instructions">
 
-    <div class="panel">
+▶ Start from the <b>center tree </b><br><br>
 
-        <h3 class="glow">ANALYSIS</h3>
+▶ Turn to the gap between the furthest marked tree and its <b>right neighbour</b><br><br>
 
-        <p>SYMBOL DATABASE MATCH: UNKNOWN</p>
-        <p>ESTIMATED AGE: 200+ YEARS</p>
-        <p>TRANSLATION CONFIDENCE: LOW</p>
+▶ Walk <b>6 meters</b><br><br>
 
-    </div>
+▶ You are now between two trees, walk to the tree in front of you
 
-    <div class="panel">
+▶ Look to the right and about two meter, note the object
 
-        <h3 class="glow">DECRYPTION TERMINAL</h3>
+</div>
 
-        <p>ENTER THE DECRYPTED WORD</p>
+</div>
 
-        <input
-            id="answer"
-            placeholder="Translation..."
-            autocomplete="off">
+<div class="panel">
 
-        <p id="result" class="warning"></p>
+<h3 class="glow">
+FIELD REPORT
+</h3>
 
-    </div>
+<p>
+
+Enter the object found at the destination. In het Nederlands.
+
+</p>
+
+<input
+id="answer"
+placeholder="Authentication code">
+
+<p id="result" class="warning"></p>
+
+</div>
 
 </div>
 
 <script>
 
-// GPS DRIFT
+// GPS drift
 
-let lat = 52.50000;
-let lon = 5.40000;
+let lat=52.5;
+let lon=5.4;
 
-setInterval(() => {
+setInterval(()=>{
 
-    lat += (Math.random()-0.5)*0.0005;
-    lon += (Math.random()-0.5)*0.0005;
+lat+=(Math.random()-.5)*0.0005;
+lon+=(Math.random()-.5)*0.0005;
 
-    document.getElementById("gps").innerText =
-        `GPS: ${lat.toFixed(5)} N / ${lon.toFixed(5)} E`;
+document.getElementById("gps").innerText=
+`GPS ${lat.toFixed(5)} N / ${lon.toFixed(5)} E`;
 
 },800);
 
+// Radio chatter
 
-// RADIO CHATTER
-
-const noise = [
-
-"—kzzt— signal unstable —",
-"…unknown dialect…",
-"::packet loss::",
-"▣ decrypting symbols ▣",
-"ERROR // LINGUISTIC MATCH",
-"— static detected —",
-"…breach in channel…"
-
+const noise=[
+"Signal acquired...",
+"Satellite lock...",
+"Tracking target...",
+"Field telemetry stable...",
+"Live movement analysis...",
+"Specimen proximity increasing..."
 ];
 
 setInterval(()=>{
 
-document.getElementById("radio").innerText =
+document.getElementById("radio").innerText=
 noise[Math.floor(Math.random()*noise.length)];
 
 },300);
 
+// Change this to your hidden marker word
 
-// CHANGE THIS TO YOUR SOLUTION
-const correctAnswer = "bigfoot";
+const correctAnswer="steen";
 
 document.getElementById("answer").addEventListener("input",function(){
 
-    if(this.value.trim().toLowerCase()===correctAnswer){
+if(this.value.trim().toLowerCase()===correctAnswer){
 
-        document.getElementById("result").innerText =
-        "TRANSLATION VERIFIED — UPDATING MAP...";
+document.getElementById("result").innerText=
+"AUTHENTICATION ACCEPTED — CASE CLOSED";
 
-        localStorage.setItem("c1","1");
+localStorage.setItem("c5","1");
 
-        setTimeout(()=>{
+setTimeout(()=>{
 
-            window.location.href="map.html";
+window.location.href="map.html";
 
-        },1200);
+},1500);
 
-    }
+}
 
 });
 
