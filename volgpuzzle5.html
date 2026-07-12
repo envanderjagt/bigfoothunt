@@ -118,7 +118,7 @@ CLEARANCE LEVEL 5
 <div class="panel">
 
 <h2 class="glow">
-TRACKING RECORDING RETRIEVED
+STRANGE VEGETATION RECORDED
 </h2>
 
 <p class="warning">
@@ -135,13 +135,7 @@ FIELD NAVIGATION RECORDING ESTIMATION
 
 <div class="instructions">
 
-▶ Walk <b>6 meters north</b><br><br>
-
-▶ Turn to bearing <b>047°</b><br><br>
-
-▶ Continue <b>3 meters</b><br><br>
-
-▶ Locate the hidden S.E.U.R. field marker.
+<b>DETERMINE THE AMOUNT OF SHROOMS ON THE CENTER TREE</b><br><br>
 
 </div>
 
@@ -155,13 +149,13 @@ FIELD REPORT
 
 <p>
 
-Enter the authentication word found at the destination.
+Enter the total amount of shrooms on the standing center tree
 
 </p>
 
 <input
 id="answer"
-placeholder="Authentication code">
+placeholder="code">
 
 <p id="result" class="warning"></p>
 
@@ -206,7 +200,7 @@ noise[Math.floor(Math.random()*noise.length)];
 
 // Change this to your hidden marker word
 
-const correctAnswer="alder";
+const correctAnswer="12";
 
 document.getElementById("answer").addEventListener("input",function(){
 
